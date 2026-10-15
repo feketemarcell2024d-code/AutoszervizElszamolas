@@ -34,7 +34,21 @@ for (int i = 0; i < Lista.Count; i++)
 
     Console.WriteLine($"{Lista[i].nev}: {Lista[i].javitottAutok} autó, {Lista[i].munkaora} óra (Garanciális: {Lista[i].garancialisjavitasok}) - munkabér: {(Lista[i].munkaora * 4000) + (Lista[i].javitottAutok * 5000)+bonusz-levonas} Ft ");
     teljesnapiber += (Lista[i].munkaora * 4000) + (Lista[i].javitottAutok * 5000) + bonusz - levonas;
+    munkaossz += Lista[i].munkaora;
+
+
+     if ((Lista[i].munkaora * 4000) +(Lista[i].javitottAutok * 5000) + bonusz - levonas >= legnagyobbber)
+     {
+    legnagyobbber = (Lista[i].munkaora * 4000) + (Lista[i].javitottAutok * 5000) + bonusz - levonas;
+    legjobbdolgozo = Lista[i].nev;
 }
+     if (Lista[i].garancialisjavitasok == 0)
+    {
+        garancialishibanelkul++;
+    }
+
+}
+
 
 
 
@@ -45,5 +59,5 @@ Console.WriteLine();
 Console.WriteLine("Összesített statisztika:");
 Console.WriteLine($"Szerviz által kifizetett teljes munkabér: {teljesnapiber} Ft");
 Console.WriteLine($"Átlagos munkaóra szerelőnként: {atlagmunka:F0} óra");
-Console.WriteLine($"Legnagyobb napi bér: {legnagyobbber.Nev} ({legnagyobbber.tel} Ft)");
+Console.WriteLine($"Legnagyobb napi bér: {legjobbdolgozo} ({legnagyobbber} Ft)");
 Console.WriteLine($"Garanciális hiba nélkül dolgozó szerelők száma: {garancialishibanelkul} fő");
